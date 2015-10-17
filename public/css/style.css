@@ -1,0 +1,12 @@
+input,span {
+	text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+ 
+}
+
+.border {
+	border: 1px solid #d4d4d4 !important;
+	margin:10px;
+	border-bottom: 2px solid #aaaaaa !important;
+}

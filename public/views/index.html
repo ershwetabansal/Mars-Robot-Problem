@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Mars ROBO</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body  ng-app="MarsRobo">
+	<div class="row">
+		<div class="col-md-1 col-sm-1 col-xs-1"></div>
+		<div class="col-md-5 col-sm-5 col-xs-12"  ng-controller="process">
+			<br>
+			<div class="col-md-12 col-sm-12 col-xs-12 border">
+				<br>
+				<div style="text-align:center;font-weight:bold">Input</div>
+				<br>
+				<button type="submit" class="col-md-12 col-sm-12 col-xs-12 btn" ng-Click="refresh()">Refresh</button><br><br><br>
+				<form name="input_form" novalidate ng-submit="show()">
+					<div class="row">
+						<span class="col-md-3 col-sm-4 col-xs-3">Grid Size :</span>
+						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="number" ng-model="maxX" required/>
+						<span class="col-md-1 col-sm-1 col-xs-1">,</span>
+						<input class="col-md-1 col-sm-1 col-xs-1" style="margin-right:10%;padding-left:0px;padding-right:0px" type="number" ng-model="maxY" required/>
+					</div>
+					<br>
+					<span >Initial Position of Robot: </span><br><br>
+					<div class="row">
+						<span class="col-md-2 col-sm-2 col-xs-2">x :</span>
+						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="number" ng-model="xCoord" required/>
+						<span class="col-md-2 col-sm-2 col-xs-2">, y :</span>
+						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="number" ng-model="yCoord" required/>
+						<span class="col-md-2 col-sm-2 col-xs-2">, dir :</span>
+						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="text" ng-model="direction" required/>
+						<br><br>
+						<div class="col-md-12 col-sm-12 col-xs-12">Moves Command :<input type="text" ng-model="moves" required/></div>
+						<br><br>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="submit" class="col-md-5 col-sm-5 col-xs-5 btn" style="margin-right:10%;" >Show Output</button>
+							<button class="col-md-5 col-sm-5 col-xs-5 btn" ng-Click="animate()">Show Animation</button>
+						</div>
+					</div>
+				<form>
+				<br><br>
+			</div>
+			<div class="col-md-12 col-sm-12 col-xs-12 border">
+				<br>
+				<div style="text-align:center;font-weight:bold">Output</div>
+				<br>
+				<div ng-repeat="out in output">
+					{{out.x}},{{out.y}},{{out.d}}{{out.status}}
+					<br><br>
+				</div>
+				
+			</div>
+
+		</div>
+
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+	<script type="text/javascript" src="/app.js"></script>
+	<script type="text/javascript" src="/controllers/grid.js"></script>
+	<script type="text/javascript" src="/controllers/process.js"></script>
+	<script type="text/javascript" src="/services/robo.move.service.js"></script>
+</body>
+</html>
+    
