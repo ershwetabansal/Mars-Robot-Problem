@@ -83,14 +83,21 @@
 					</div>
 
 				</div>
-			</div>
 
+			</div>
+			<div style="margin-left:50px;">
+				<strong>Instructions :</strong>
+				<p>1. Commands - F (Forward Move), R (Right turn), L (Left turn) . Any combination of these 3 commands can be used in Moves command box. Any other command will be neglected.
+				</p>
+				<p>2. On clicking 'Show Output' button, one animation will start. Please scroll down to view the same. While animation is running, you can not process other command. It will show an alert if you try to. Animation can be turned off, by unchecking the checkbox. But it will be applied for the next command and not the current one. 
+				</p>
+			</div>
 		</div>
 		<br><br>
 		<div class="col-md-1 col-sm-1 col-xs-1"></div>
-		<div class="col-md-11 col-sm-11 col-xs-11" >
+		<div class="col-md-9 col-sm-9 col-xs-9" >
 			<div class="grid-box">
-				<div  style="margin:50px auto;">			
+				<div >			
 					<div ng-repeat="row in gridObj">
 						<div class="row">
 							<div class="grid-item border-grid-item" ng-repeat="elem in row" ng-class="elem.gridcolor">
@@ -100,21 +107,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		
+			<span ng-show="gridObj.length > 0">0,0</span>
 
-	</div>
-	<div style="margin-left:50px;">
-		<strong>Instructions :</strong>
-		<p>1. Commands - F (Forward Move), R (Right turn), L (Left turn) . Any combination of these 3 commands can be used in Moves command box. Any other command will be neglected.
-		</p>
-		<p>2. Original Problem statement for this project is  <a href="https://drive.google.com/file/d/0B92tk0kBJxVeRnB0QW9JcHl2SXM/view">here</a>
-		</p>
-		<p>3. While animation is running, you can not process other command. It will show an alert if you try to.
-		</p>
-		<p>4. Animation can be turned off, by unchecking the checkbox. But it will be applied for the next command and not the current one.
-		</p>
-		<p>5. For Animation, grid size should be maximum (11,11). Else the view will be distorted.</p>
+		</div>
+
+		<div ng-show="gridObj.length > 0" class="col-md-2 col-sm-2 col-xs-2">
+			<img src="/assets/NEWS.png" height="120" width="120"></img>
+		</div>
 
 	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
