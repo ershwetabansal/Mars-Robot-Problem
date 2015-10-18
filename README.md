@@ -5,7 +5,7 @@ Used Technology
 
 1)Angular.js 2) node.js
 
-To test -
+To test the functionality test cases can be added to public/services/robo.move.serviceSpec.js and the same can be tested with following commands -
 $ bower install
 $ npm install
 $ karma start
@@ -14,3 +14,4 @@ To open in browser -
 Run $ npm install
 Run $ node server/index.js
 Open http://localhost:3000/robo in your browser.
+
