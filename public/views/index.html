@@ -7,63 +7,101 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 
-<body  ng-app="MarsRobo">
+<body  ng-app="MarsRobo" ng-controller="process">
 	<div class="row">
 		<div class="col-md-1 col-sm-1 col-xs-1"></div>
-		<div class="col-md-5 col-sm-5 col-xs-12"  ng-controller="process">
+		<div class="col-md-5 col-sm-5 col-xs-12"  >
 			<br>
-			<div class="col-md-12 col-sm-12 col-xs-12 border">
+			<div class="col-md-12 col-sm-12 col-xs-12 border-block">
 				<br>
-				<div style="text-align:center;font-weight:bold">Input</div>
+				<div style="text-align:center;font-weight:bold">Command Terminal</div>
 				<br>
-				<button type="submit" class="col-md-12 col-sm-12 col-xs-12 btn" ng-Click="refresh()">Refresh</button><br><br><br>
+				<button type="submit" class="col-md-6 col-sm-6 col-xs-6 btn" style="margin-right:10%" ng-Click="refresh()">Reset</button>
+				<div class="checkbox">
+				  <label><input type="checkbox" value="" ng-model="animation">Animation ?</label>
+				</div>
+				<br><br>
 				<form name="input_form" novalidate ng-submit="show()">
 					<div class="row">
 						<span class="col-md-3 col-sm-4 col-xs-3">Grid Size :</span>
-						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="number" ng-model="maxX" required/>
+						<input style="width:50px;height:auto;" class="col-md-1 col-sm-1 col-xs-1 form-control" type="number" ng-model="maxX" required/>
 						<span class="col-md-1 col-sm-1 col-xs-1">,</span>
-						<input class="col-md-1 col-sm-1 col-xs-1" style="margin-right:10%;padding-left:0px;padding-right:0px" type="number" ng-model="maxY" required/>
+						<input class="col-md-1 col-sm-1 col-xs-1 form-control"  style="margin-right:10%;width:50px;height:auto" type="number" ng-model="maxY" required/>
 					</div>
 					<br>
 					<span >Initial Position of Robot: </span><br><br>
 					<div class="row">
-						<span class="col-md-2 col-sm-2 col-xs-2">x :</span>
-						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="number" ng-model="xCoord" required/>
-						<span class="col-md-2 col-sm-2 col-xs-2">, y :</span>
-						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="number" ng-model="yCoord" required/>
-						<span class="col-md-2 col-sm-2 col-xs-2">, dir :</span>
-						<input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="text" ng-model="direction" required/>
-						<br><br>
-						<div class="col-md-12 col-sm-12 col-xs-12">Moves Command :<input type="text" ng-model="moves" required/></div>
-						<br><br>
+						<span class="col-md-1 col-sm-1 col-xs-1">x :</span>
+						<input style="width:50px;height:auto" class="col-md-1 col-sm-1 col-xs-1 form-control" type="number" ng-model="xCoord" required/>
+						<span class="col-md-2 col-sm-1 col-xs-2">, y :</span>
+						<input style="width:50px;height:auto" class="col-md-1 col-sm-1 col-xs-1 form-control" type="number" ng-model="yCoord" required/>
+						<span class="col-md-3 col-sm-3 col-xs-3">, direction :</span>
+						<!-- <input style="padding-left:0px;padding-right:0px" class="col-md-1 col-sm-1 col-xs-1" type="text" ng-model="direction" required/> -->
+						<div class="col-md-2 col-sm-2 col-xs-2 input-group">                                            
+				            <input type="TextBox" id="dirBox" Class="form-control" style="height:auto" readonly></input>
+				            <div class="input-group-btn">
+				                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+				                    <span class="caret"></span>
+				                </button>
+				                <ul id="dirList" class="dropdown-menu">
+				                    <li><a href="#">N</a></li>
+				                    <li><a href="#">E</a></li>
+				                    <li><a href="#">W</a></li>
+				                	<li><a href="#">S</a></li>
+				                </ul>
+				            </div>
+				        </div>
+
+						<br>
+						<div class="col-md-12 col-sm-12 col-xs-12">Moves Command :<input type="text" ng-model="moves" required class="form-control"/></div>
+						<br><br><br><br>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<button type="submit" class="col-md-12 col-sm-12 col-xs-12 btn" style="margin-right:10%;" >Show Output</button>
-							
+							<button type="submit" class="col-md-12 col-sm-12 col-xs-12 btn btn-primary" style="margin-right:10%;height:auto" >Show Output</button>
 						</div>
 					</div>
 				<form>
-				<br><br>
+				<br>
 			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12 border">
+			<div class="col-md-12 col-sm-12 col-xs-12 border-block">
 				<br>
-				<div style="text-align:center;font-weight:bold">Output</div>
-				<br>
-				<div ng-repeat="out in output">
-					{{out.x}},{{out.y}},{{out.d}}{{out.status}}
-					<br><br>
+				<div class="col-md-6 col-sm-6 col-xs-6" style="border-right:1px solid black;">	
+					<div style="text-align:center;font-weight:bold">Input</div>
+					<br>
+					<div ng-repeat="input in output" style="text-align:center;">
+						{{input.iX}},{{input.iY}},{{input.iD}}[{{input.moves}}]
+						<br><br>
+					</div>
+
 				</div>
-				
+				<div class="col-md-6 col-sm-6 col-xs-6">	
+					<div style="text-align:center;font-weight:bold">Output</div>
+					<br>
+					<div ng-repeat="out in output" style="text-align:center;">
+						{{out.x}},{{out.y}},{{out.d}}{{out.status}}
+						<br><br>
+					</div>
+
+				</div>
 			</div>
 
+		</div>
+		<br><br>
+		<div class="col-md-5 col-sm-5 col-xs-12" >
+			<div ng-repeat="row in gridObj">
+				<div class="row">
+					<div class="grid-item border-grid-item" ng-repeat="elem in row" ng-class="elem.gridcolor">
+						<div class="" ng-class="elem.class"></div>
+					</div>		
+				</div>
+			</div>
 		</div>
 		
 
 	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/app.js"></script>
-	<script type="text/javascript" src="/controllers/grid.js"></script>
 	<script type="text/javascript" src="/controllers/process.js"></script>
 	<script type="text/javascript" src="/services/robo.move.service.js"></script>
 </body>

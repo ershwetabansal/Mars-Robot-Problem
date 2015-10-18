@@ -12,11 +12,12 @@ describe('Mars Robo Service Testing', function() {
         service = RoboMove;
       }));
 
+
+  describe('should test Robo set positon', function() {
     beforeEach(function(){
       service.setGridSize(5,3);    
     });
-  describe('should test Robo set positon', function() {
-    
+
     var posObj;
     beforeEach(function(){
       service.setPosition(1,1,'E');
@@ -32,7 +33,10 @@ describe('Mars Robo Service Testing', function() {
   });
 
   describe('should test the moves', function() {
-
+    beforeEach(function(){
+      service.setGridSize(5,3);    
+    });
+    
     it('should pass all scenarios', function() {
         //Scenario -1
         service.setPosition(1,1,'E');
@@ -60,6 +64,33 @@ describe('Mars Robo Service Testing', function() {
         expect(posObj.y).toBe(3);
         expect(posObj.d).toBe('S');
         expect(posObj.lost).toBe(false);
+    });
+
+});
+
+  describe('should test the moves', function() {
+    beforeEach(function(){
+      service.setGridSize(2,2);    
+    });
+
+    it('should pass all scenarios', function() {
+        //Scenario -1
+        service.setPosition(1,1,'W');
+        service.setMoves('FF');
+        var posObj = service.getPosition();        
+        expect(posObj.x).toBe(0);
+        expect(posObj.y).toBe(1);
+        expect(posObj.d).toBe('W');
+        expect(posObj.lost).toBe(true);
+    
+        service.setPosition(1,1,'S');
+        service.setMoves('FF');
+        var posObj = service.getPosition();        
+        expect(posObj.x).toBe(1);
+        expect(posObj.y).toBe(0);
+        expect(posObj.d).toBe('S');
+        expect(posObj.lost).toBe(true);
+    
     });
 
 });
