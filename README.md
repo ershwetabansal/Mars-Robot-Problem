@@ -3,7 +3,11 @@ Purpose : Solution to Mars Robot Problem given at https://drive.google.com/file/
 
 Used Technology
 
-1)Angular.js 2) node.js
+1)Angular.js for client side code 
+2) node.js to start server 
+3) Jasmine to test the service 
+4) Karma to run test cases
+
 
 To test the functionality test cases can be added to public/services/robo.move.serviceSpec.js and the same can be tested with following commands -
 $ bower install
