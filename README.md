@@ -7,8 +7,8 @@ Solution to Mars Robot Problem given at https://drive.google.com/file/d/0B92tk0k
 * Jasmine, Karma for testing
 
 ## Installation steps :
-$ bower install
-$ npm install
-$ node server/index.js
-Application can be accessed using http://localhost:3000/robo in browser.
+* $ bower install
+* $ npm install
+* $ node server/index.js
+* Application can be accessed using http://localhost:3000/robo in browser.
 
